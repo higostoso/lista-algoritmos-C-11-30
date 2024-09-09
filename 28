@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    float a, b, c, d;
+
+    printf("Digite o elemento a11: ");
+    scanf("%f", &a);
+    
+    printf("Digite o elemento a12: ");
+    scanf("%f", &b);
+    
+    printf("Digite o elemento a21: ");
+    scanf("%f", &c);
+    
+    printf("Digite o elemento a22: ");
+    scanf("%f", &d);
+    
+    float determinante = a * d - b * c;
+    
+    printf("O determinante da matriz é: %.2f\n", determinante);
+    
+    return 0;
+}
