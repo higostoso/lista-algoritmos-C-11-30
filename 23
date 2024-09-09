@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int numero_secreto, palpite, tentativas = 0;
+    const int LIMITE_INF = 1;
+    const int LIMITE_SUP = 100;
+
+    srand(time(NULL));
+    numero_secreto = rand() % (LIMITE_SUP - LIMITE_INF + 1) + LIMITE_INF;
+
+    printf("Bem-vindo ao jogo de adivinhação!\n");
+    printf("Tente adivinhar o número secreto entre %d e %d.\n", LIMITE_INF, LIMITE_SUP);
+
+    do {
+        printf("Digite o seu palpite: ");
+        if (scanf("%d", &palpite) != 1) {
+            printf("Entrada inválida. Por favor, digite um número.\n");
+            // Limpa o buffer de entrada
+            while (getchar() != '\n');
+            continue;
+        }
+
+        tentativas++;
+
+        if (palpite < LIMITE_INF || palpite > LIMITE_SUP) {
+            printf("O palpite deve estar entre %d e %d. Tente novamente.\n", LIMITE_INF, LIMITE_SUP);
+        } else if (palpite < numero_secreto) {
+            printf("O número secreto é maior. Tente novamente.\n");
+        } else if (palpite > numero_secreto) {
+            printf("O número secreto é menor. Tente novamente.\n");
+        } else {
+            printf("Parabéns! Você acertou o número secreto %d em %d tentativas.\n", numero_secreto, tentativas);
+        }
+
+    } while (palpite != numero_secreto);
+
+    return 0;
+}
